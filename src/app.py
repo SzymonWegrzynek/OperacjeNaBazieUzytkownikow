@@ -34,7 +34,7 @@ def update_user() -> Response:
         users[body["id"]] = body
         return Response(status=204)
     else:
-    return Response(status=400)
+        return Response(status=400)
 
 
 @app.put("/users/<id>")
