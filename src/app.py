@@ -5,7 +5,7 @@ from flask import Response
 
 app = Flask(__name__)
 
-users = {}
+users = []
 
 
 @app.get("/users")
@@ -15,20 +15,36 @@ def get_users() -> Response:
 
 @app.get("/users/<id>")
 def get_one_user(id: str) -> Response:
-    user = users.get(id)
+    user = next((i for i in users if i[id] == id), None)
     return jsonify(user, status=200)
 
 
 @app.post("/users")
-def create_user() -> Response:
+def create_user(user_id=None) -> Response:
     body = request.json
     users.append(body)
+    user_id += 1
     return Response(status=201)
 
 
 @app.patch("/users/")
 def update_user() -> Response:
-    return Response(status=204)
+    body = request.json
+    if body["id"] in users:
+        users[body["id"]] = body
+        return Response(status=204)
+    else:
+    return Response(status=400)
+
+
+@app.put("/users/<id>")
+def replace_user(id: str) -> Response:
+    body = request.json
+    if id in users:
+        users[id] = body
+        return Response(status=204)
+    else:
+        return Response(status=400)
 
 
 @app.delete("/users/<id>")
