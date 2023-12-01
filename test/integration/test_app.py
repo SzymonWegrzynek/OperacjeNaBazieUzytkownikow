@@ -23,17 +23,20 @@ def test_create_user_endpoint() -> None:
 
 
 def test_patch_user_endpoint(status_code=None) -> None:
+    client = app.test_client()
     data = {'id': 1, 'name': 'Updated Name'}
-    response_patch = app.patch('/users', json=data)
+    response_patch = client.patch('/users', json=data)
     assert (response_patch, status_code == 204)
 
 
 def test_put_user_endpoint(status_code=None) -> None:
+    client = app.test_client()
     data = {'id': 1, 'name': 'Replaced Name'}
-    response_put = app.put('/users/1', json=data)
+    response_put = client.put('/users/1', json=data)
     assert (response_put, status_code == 204)
 
 
 def test_delete_user_endpoint(status_code=None) -> None:
-    data = app.delete('/users/1')
+    client = app.test_client()
+    data = client.delete('/users/1')
     assert (data, status_code == 204)
