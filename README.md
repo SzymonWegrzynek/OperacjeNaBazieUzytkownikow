@@ -1,6 +1,7 @@
 # Sprawdzian-praktyczny-operacje-na-bazie-uzytkownikow
 
 Proszę napisać aplikację serwerową spełniającą następujące warunki:
+
 1. Korzysta z protokołu HTTP w wersji 1.1
 2. Obsługuje następujące końcówki (endpointy):
 GET /users -> zwracającą odpowiedź o kodzie 200 i listę użytkowników zakodowaną w JSON w postaci: [{"id": 1, "name": "Wojciech", "lastname": "Oczkowski}, ...];
@@ -10,16 +11,3 @@ PATCH /users/<id> -> przyjmującej request o ciele w postaci {"name": "Wojciech"
 PUT /users/<id> -> przyjmującej request o ciele w postaci {"name": "Wojciech", "lastname": "Oczkowski} i zapisującej lub modyfikującej użytkownka o podanym id - zwracamy kod odpowiedzi 204;
 DELETE /users/<id> -> usuwającej z tymczasowej persystencji użytkownika o podanym id, jeżeli istnieje - zwracamy wówczas kod odpowiedzi 204. Jeżeli nie istnieje - zwracamy kod odpowiedzi 400
 3. Końcówki są przetestowane jednostkowo i integracyjnie.
-4. Cała praca oddana jest w postaci repozytorium (w idealnym wypadku jako link do zdalnego repozytorium), z historią commitów obrazującą przebieg pracy.
-5. Stosujemy się do konwencji formatowania kodu i nazewnictwa w Pythonie.
-
-Zalecanym frameworkiem jest Flask, a językiem Python, nie mniej można przedstawić rozwiązania realizujące funkcjonalnie powyższe założenia w innym stacku technologicznym (z wyjątkiem backendowych wersji JS).
-
-ZASADY OCENIANIA:
-Za każdy endpoint można uzyskać 2,5 ptk.
-Za brak testu jednostkowego: -0,5 ptk
-Za brak testu integracyjnego: -0,5 ptk.
-Za braki implementacji: do -1 ptk.
-Za braki formalne (brak historii comitów, nie stosowanie się do konwencji): -0,5 ptk.
-
-Sumarycznie można uzyskać 15 pt. - co stanowi 75% oceny ze sprawdzianu.
